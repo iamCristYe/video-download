@@ -5,7 +5,7 @@ import subprocess
 import requests
 import subprocess
 
-time.sleep(20)
+# time.sleep(20)
 # https://www.showroom-live.com/api/live/streaming_url?room_id=190685&abr_available=1
 
 # Telegram 配置
@@ -19,8 +19,8 @@ SENT_JSON_FILE = "sent.json"
 # FFmpeg 命令
 FFMPEG_COMMAND = [
     "ffmpeg",
-    # "-decryption_key",
-    # "283a091947b327f68ab4d13345d96748",
+    "-decryption_key",
+    "d5b13bdccb8942da873f253a698f73d8",
     "-i",
     "chunklist.ts",
     "-map",
