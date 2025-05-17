@@ -1,0 +1,42 @@
+name: channel3
+
+on:
+  # schedule:
+  #   - cron: '20,50 * * * *'
+  # push:
+  #   branches:
+  #     - master
+  workflow_dispatch:
+
+jobs:
+  channel3:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8' # Specify the Python version you need
+    - name: Download FFmpeg
+      run: |
+        sudo apt update
+        sudo apt install ffmpeg 
+        ffmpeg -version
+
+    - name: Download N_m3u8DL-RE and Stream
+      run: |
+        wget -O N_m3u8DL-RE.tar.gz https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.3.0-beta/N_m3u8DL-RE_v0.3.0-beta_linux-x64_20241203.tar.gz
+        tar -xzf N_m3u8DL-RE.tar.gz
+        ./N_m3u8DL-RE --live-real-time-merge "https://apn12.playlist.live-video.net/v1/playlist/Cv4FesoCaZkp9YhNa-iWHHfb-miLT6MCe87pQz-0JVKhp2HG2fy1VAPcrsN4b2VbtT6Cau3cUujUVvegkvtQM4JreTXrpHnnhMCbPWSASWkSba06TmPSqOOJEEky--LBdlfBxtgfdyKRLfBd8G5tjdKTCPSjl3DEKZ92F0VdxuYR14B3kMNgmFr_SHGUmNfQr3hqYPnpAIwoYUTPhgIjXXn8JNID9DB5lBMkT83eKnu6mrwZPUsNqlNY5XM136Oaper-n_6YF8YfpIe8jbL8qIAa4PpOUoIz0BApkso1MGcDbheQFL5Mr_EV5u-uuW-Iga2AAVUP4p6eNRwlcG-FsJCX7Tig4mQU-TLTf5yuZaccml9mABUFbnlXcoGQeXLLys6aRWDjzc6-5yj35yP8THIbRoOobrr0ZYIyosEWeUfSIf0c9t57jVb20dEuUDtIEyQEDRFtQRVLWALNOdBFWBx9aV4qJMxaIGOIRaxrQrx_b__9vZMNrqCeSXkN11Dszqw6K1tdJjaQ9pBHfOOfFNBoz4CIAnL4ocRfTOWb74DcwbboKvS6nb1Xmly4tbiHpowmy8e3OWf3maX9vr2dXmN1ACoEaVaEVm6ohKmoozXu9fCDvg1MgzePEjYN4yoglBNZX4oN_XzShM_NA6ghyBQIn20m6Likrob2G2fu_i4g-q0qJrm_frSrDRDr_qH3Xzv0jEVqEtipuFSCYHyJnwZKmYlJRCxRgOG1UseFGRrd8p9xI5hV6UPUPGg5JPgiXqooFGSBidIN_0aE-ymcaLLGNDRgcLlpwaOpgHOHfXO92ojsmUgA6Ogh4ozRGb251nC1IzAE8We1uqVZEs-Fl4jUaLX0i1xhfUJfU98AfnJPe29r-zLI0p_remeoVZrdnggEYF3C-QIfRORkuFo8xe5lqdH02w4oPMt2G_27dQiF90pqAX438xLv8RlSZFWg4Jn7n0u_IzE5AXKMef8Ty0cXaqGKiVCVq5D_NwbXCIWytaioMLsOMslZ9CsGm1IfQxoMa-BYpTArebWW6ZyoIAEqCXVzLXdlc3QtMjClDA.m3u8" --save-name chunklist &
+        # --live-keep-segments 
+    
+    - name: Run Python script
+      run: |
+        pip install requests
+        pip install pywidevine
+        python send_Telegram.py
+      env:
+        channel_id: "-1002290539654"

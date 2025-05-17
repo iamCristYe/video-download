@@ -1,0 +1,43 @@
+name: channel4
+
+on:
+  # schedule:
+  #   - cron: '20,50 * * * *'
+  # push:
+  #   branches:
+  #     - master
+  workflow_dispatch:
+
+jobs:
+  channel4:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8' # Specify the Python version you need
+    - name: Download FFmpeg
+      run: |
+        sudo apt update
+        sudo apt install ffmpeg 
+        ffmpeg -version
+
+    - name: Download N_m3u8DL-RE and Stream
+      run: |
+        wget -O N_m3u8DL-RE.tar.gz https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.3.0-beta/N_m3u8DL-RE_v0.3.0-beta_linux-x64_20241203.tar.gz
+        tar -xzf N_m3u8DL-RE.tar.gz
+        ./N_m3u8DL-RE --live-real-time-merge "https://hls-css.live.showroom-live.com/live/4a6b46b0cd04341a3fd7928671afd069f22e2f9e9619201777c7806c68013148.m3u8" --save-name chunklist &
+        # --live-keep-segments 
+    
+    - name: Run Python script
+      run: |
+        pip install requests
+        pip install pywidevine
+        ls
+        python send_Telegram.py
+      env:
+        channel_id: "-1002477355148"

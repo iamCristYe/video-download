@@ -1,0 +1,7 @@
+venv
+chunk*
+*mp4
+device*
+result.json
+stagecrowd.py
+video_info.json
