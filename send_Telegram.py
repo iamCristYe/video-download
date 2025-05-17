@@ -20,7 +20,7 @@ SENT_JSON_FILE = "sent.json"
 FFMPEG_COMMAND = [
     "ffmpeg",
     "-decryption_key",
-    "d5b13bdccb8942da873f253a698f73d8",
+    "7f257214bc48de644c9b25eebda5fa62",
     "-i",
     "chunklist.mp4",
     "-map",
@@ -51,6 +51,7 @@ def run_ffmpeg():
     except subprocess.CalledProcessError as e:
         print("FFmpeg error output:")
         print(e.stderr.decode())
+        time.sleep(10)
 
 
 def load_sent_status():
