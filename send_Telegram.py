@@ -4,7 +4,7 @@ import time
 import subprocess
 import requests
 
-
+time.sleep(20)
 # https://www.showroom-live.com/api/live/streaming_url?room_id=190685&abr_available=1
 
 # Telegram 配置
