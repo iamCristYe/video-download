@@ -80,6 +80,7 @@ def send_to_telegram(file_path):
             )
         if response.status_code == 200:
             return True
+        
         print(f"Failed to send {file_path}, retrying...")
         time.sleep(5)
 
