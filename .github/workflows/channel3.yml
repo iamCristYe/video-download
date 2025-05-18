@@ -30,7 +30,7 @@ jobs:
       run: |
         wget -O N_m3u8DL-RE.tar.gz https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.3.0-beta/N_m3u8DL-RE_v0.3.0-beta_linux-x64_20241203.tar.gz
         tar -xzf N_m3u8DL-RE.tar.gz
-        ./N_m3u8DL-RE --live-real-time-merge "https://ssai-variants.streaks.jp/v5/tver-simul-ntv/938232e586b34196b704a5839663984b/cb593b5eafbb4645907e979d757e1dd5/manifest/13df2e5de86b5ff0c5c3522d82e73a5fbf55aac1/pro-mt-174-11920/f4e837eb-5606-4fb1-ab5a-2b692a5efcf6/0.m3u8?pdt=-10101&session=f4e837eb-5606-4fb1-ab5a-2b692a5efcf6&vt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlZGdlIjoibGl2ZS10dmVyLXNpbXVsLW50di5zdHJlYWtzLmpwIiwib2Zmc2V0Ijo5LCJwZHQiOiItMTAxMDEifQ.AhtblZgOxVSx-UF-Tl-Qwb7KCa06-tJIAYcG-Q3bt-U" --save-name chunklist &
+        ./N_m3u8DL-RE --live-real-time-merge "https://video-edge-87ca13.sjc05.hls.live-video.net/v1/segment/Cp5u7D-n8R15_ghfMhSUMyyxyOkuT5Murptb6fcLVR61-T2XPd0gP--OLAKPEqZkBltP5ZpImeSw2VxFIChlydX8FbLhC1qVHEtHONFqYUuf27vn2f4Q9lfBRmBOeJUcvHDOsu9ficPUkAP-_PgwxLgux1th12j_8cpQrhvy2AHWwer_BVD7v96w0NcdLndlsKmF_8VraXQcSpj3O_O2Tcnu_aeNai_jflKCnAb7ko0diHxnogQ-81R_poNWM8UOvtIG-x9eJpK9ioag4QQWNBN5Yc-q4c2OiAnmoMvSAZa8JP8ZpOv9FahPeNS44-W-_FlBHE1Pd1JdOBYmY9PQrRABSpM3esNVWWAX4rfci6hw20HTJqTfVmqt3PSBJK56Q4pcb7HmdKZJh-am6BsicZt1zdd9-q95OuzzBfEEC-5TRY_g9Ayxt3fHgrH9vNL0ElQUKxe3X_kZTn8XxAjzL-UXYLmKRmK7d1ccKOoYqn2wEBrPowmdJZkXR2oFV3y1CUiCRXJ194SIvD3U7ySEdl6JEysJD6lq53HAU_xSXYafgHhH-VJ9dW-bH4pTQT6vWwAUthhSpCo4x5S5JhiXJHIvCRdOad2gg74FRk4asv27ne74OeBwYQ6sO5wp6l17mVL1smalH99QXg-J7uSjyPAj4llI8-AUM_ofFbLuf-4lsmktE4mzUC93AcrhZVXiovfcGLxuB-9e2OU_ZDPWnLCYBsC5DNFmQScdD3VOzXAKvrw2CWehNB8fKpIyL.ts" --save-name chunklist &
         # --live-keep-segments 
     
     - name: Run Python script
